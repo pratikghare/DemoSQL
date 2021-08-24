@@ -31,7 +31,14 @@
     background-color: #f8f8f8;
 }
 .query-panel{
-    padding-right: 1em;
+    /* padding-right: 1em; */
+    position: relative;
+}
+.query-panel > button{
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-radius: 0px;
 }
 textarea{
     height: 100%;
@@ -46,9 +53,17 @@ textarea{
     font-family: monospace;
     padding: 1em;
 }
-
+#searchBox{
+    width: 100%;
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    outline: none;
+    padding: 8px 15px;
+    margin: 1em 0 2em 0;
+}
 .table-container{
-    padding: 1em;
+    padding: 0 1em;
 }
 .error-panel{
     padding: 1em;
@@ -57,8 +72,8 @@ textarea{
     color: red;
     text-align: center;
 }
-.table-container{
-    height: 400px;
+.table-cnt{
+    height: 330px;
     overflow-y: auto;
     overflow-x: auto;
 }

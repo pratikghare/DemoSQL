@@ -12,7 +12,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
 </head>
 <body >
-    <section style="height: 100vh; display: grid; grid-template-rows: 50px auto;">
+    <form style="height: 100vh; display: grid; grid-template-rows: 50px auto;" action="/publish" method="POST">
         <div class="menu-bar">
             <div class="menu-btn" id="menu-btn" onclick="setLeftPanelTableList()">
                 <img src="./assets/menu.svg" >
@@ -31,12 +31,13 @@
                     <li><a class="dropdown-item" href="#">Connection</a></li>
                 </ul>
             </div>
-
+            
             <button type="button" class="btn btn-success-outline btn-sm" id="run" onclick="fetchTableDetails()">Run</button>
+
 
             <button type="button" class="btn btn-success-outline btn-sm" id="import">Import</button>
             
-            <button type="button" class="btn btn-success-outline btn-sm" id="export">Export</button>
+            <button type="button" class="btn btn-success-outline btn-sm" id="export" onclick="callcsv()">Export as CSV</button>
         </div>
 
         <div class="main-section">
@@ -44,9 +45,12 @@
             </div>
 
             <div class="main-panel">
-                <div class="query-panel">
+                <!-- <form class="query-panel" action="/publish" method="POST"> -->
+                <div class="query-panel">    
                     <textarea name="query-box" id="query-box" ></textarea>
+                    <!-- <button type="button" class="btn btn-success btn-sm" id="run" onclick="fetchTableDetails()">Run</button> -->
                 </div>
+                <!-- </form> -->
 
                 <div class="result-panel">
                     <div class="error-panel">
@@ -54,46 +58,24 @@
                     </div>
 
                     <div class="table-container">
-                        <table id="result-table" class="table table-hover">
-                            <thead id="result-head">
-                                <tr>
-                                    <th scope="col">Feature</th>
-                                    <th scope="col">Class</th>
-                                    <th scope="col">Check</th>
-                                    <th scope="col">Class</th>
-                                    <th scope="col">Check</th>
-                                </tr>
-                            </thead>
+                        <div class="searchBox">
+                            <input type="text" name="searchBox" id="searchBox" placeholder="Search..." onkeyup="filterTable()">
+                        </div>
 
-                            <tbody id="result-body">
-                                <tr>
-                                    <td scope="row">Weave</td>
-                                    <td scope="row">Weave</td>
-                                    <td scope="row">Weave</td>
-                                    <td scope="row">Weave</td>
-                                    <td scope="row">Weave</td>
-                                </tr>
-                                <tr>
-                                    <td scope="row">Weave</td>
-                                    <td scope="row">Weave</td>
-                                    <td scope="row">Weave</td>
-                                    <td scope="row">Weave</td>
-                                    <td scope="row">Weave</td>
-                                </tr>
-                                <tr>
-                                    <td scope="row">Weave</td>
-                                    <td scope="row">Weave</td>
-                                    <td scope="row">Weave</td>
-                                    <td scope="row">Weave</td>
-                                    <td scope="row">Weave</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <div class="table-cnt">
+                            <table id="result-table" class="table table-hover">
+                                <thead id="result-head">
+                                </thead>
+    
+                                <tbody id="result-body">
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </form>
 </body>
 <script src="./index.js"></script>
 </html>
